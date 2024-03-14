@@ -1,0 +1,1 @@
+Definitely my most complex project yet. Full stack webapplication made with express that uses MongoDB to store information, rest API for page routing and implements MVC architecture. It also has very detiled error checkers and validation credentials. It is basically a website that allows you to create an event as an admin, users can RSVP your event, ect.

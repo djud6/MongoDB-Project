@@ -1,0 +1,110 @@
+<%- include('../partials/header.ejs')%>
+<style>
+    footer{
+position: absolute;
+bottom: 0;
+width: 100%;
+}   
+.capitalize {
+    text-transform: capitalize;
+  }
+  table {
+  border-collapse: collapse;
+  width: 80%; /* Reduce the width of the table */
+  margin: 0 auto; /* Center-align the table */
+  border: 1px solid black; /* Reduce the thickness of the outer border */
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid black; /* Reduce the thickness of row borders */
+  border-right: 1px solid black; /* Reduce the thickness of column borders */
+}
+
+th {
+  background-color: #f2f2f2;
+}
+button{
+  background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+button:hover{
+  background-color: #333; 
+
+}
+
+
+</style>
+<div class="container">
+  <h2 class="capitalize">Welcome, <%= user.firstName + " " + user.lastName %></h2>
+  <% if (connections.length) { %>
+    <h3>Below are your Connections</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Connection</th>
+          <th>Category</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% connections.forEach(connection => { %>
+          <tr>
+            <td>
+              <a href="/connections/<%= connection.id %>"><%= connection.topic %></a>
+            </td>
+            <td><%= connection.category %></td>
+            <td>
+              <form action="" class="container1">
+                <button type="submit" formmethod="GET" formaction="/connections/<%= connection.id %>/edit">Edit</button>
+                <button type="submit" formmethod="POST" formaction="/connections/<%= connection.id %>?_method=DELETE">Delete</button>
+              </form>
+            </td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+  <% } else { %>
+    <p>You have not created any connections</p>
+  <% } %>
+
+
+    <% if (rsvps.length) { %>
+      <h3>Below are your RSVPS</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Connection Name</th>
+            <th>RSVP Status</th>
+            <th>RSVP</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% rsvps.forEach(rsvp => { %>
+            <tr>
+              <td><%= rsvp.connection.topic %></td>
+              <td><%= rsvp.rsvp %></td>
+              <form action="" class="container1">
+              <td><button type="submit" formmethod="GET" formaction="/connections/<%= rsvp.connection.id %>/">Update</button></td> 
+              <td><button type="submit" formmethod="POST" formaction="/connections/<%= rsvp.connection.id %>/rsvp?_method=DELETE">Delete</button></td>
+            </form>
+            </tr>
+          <% }); %>
+        </tbody>
+        
+      </table>
+    <% } else { %>
+      <p>You have not made any RSVPS</p>
+    <% } %>
+</div>
+
+
+</body>
+<%- include('../partials/footer.ejs') %>
+</html>

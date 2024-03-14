@@ -1,0 +1,40 @@
+<%- include('../partials/header.ejs') %>
+
+        <style>
+            a{
+        text-decoration: none;
+        color: grey;
+    }
+        footer{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+            
+        </style>
+    
+    <body>
+      <div class="container">
+        <% if (connections.length) { %>
+          <% const categoryMap = new Map(); %>
+          <% connections.forEach(connection => { %>
+            <% if (!categoryMap.has(connection.category)) { %>
+              <% categoryMap.set(connection.category, []); %>
+            <% } %>
+            <% categoryMap.get(connection.category).push(connection); %>
+          <% }); %>
+    
+          <% categoryMap.forEach((connectionsInCategory, category) => { %>
+            <h1><%= category %></h1>
+            <% connectionsInCategory.forEach(connection => { %>
+              <a href="/connections/<%= connection.id %>"><p><%= connection.topic %></p></a>
+            <% }); %>
+          <% }); %>
+    
+        <% } else { %>
+          <p>There are no connections to be displayed</p>
+        <% } %>
+      </div>
+    </body>
+    
+    <%- include('../partials/footer.ejs') %>

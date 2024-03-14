@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Connection Site</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<header>
+    <nav class="main-nav">
+        <div class="logo">
+            <a href='/'>
+                <img src="/images/logo.png" alt="charlotte logo" width="200">
+            </a>
+        </div>
+        <div class="user-actions">
+            <div class="login-signup-box">
+                <a href="/connections/new" class="cnt">Start a New Connection</a>
+                
+                <% if (!user) { %>
+                  <a href="/users/login" class="login-button">Log In</a>
+                  <a href="/users/new" class="signup-button">Sign Up</a>
+                <% } else { %>
+                  <a href="/users/profile" class="login-button">Profile</a>
+                  <a href="/users/logout" class="signup-button">Logout</a>
+                <% } %>
+                
+                
+            </div>
+        
+    </nav>
+</header>
+
+<div class="gen-nav">
+    <nav>
+        <a href='/' class="x">Home</a>
+        <a href='/connections' class="x">Connections</a>
+    </nav>
+</div>
+
+<% if (errorMessages.length > 0) { %>
+    <% errorMessages.forEach(message => { %>
+      <div class="error"><%= message %></div>
+    <% }); %>
+  <% } %>
+
+  <% if (successMessages.length > 0) { %>
+    <% successMessages.forEach(message => { %>
+      <div class="success" id="success"><%= message %></div>
+    <% }); %>
+  <% } %>
+
+  <script>
+    setTimeout(function() {
+      document.getElementById('success').style.display = 'none';
+    }, 3000);
+  </script>
+  

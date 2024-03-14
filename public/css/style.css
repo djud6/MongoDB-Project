@@ -1,0 +1,138 @@
+
+
+body, html {
+margin: 0;
+padding: 0;
+height: 100%;
+font-family: sans-serif;
+}
+body{
+    
+    min-height: 100vh;
+    
+    
+}
+
+header nav {
+background-color: #333; 
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 20px 20px; 
+}
+nav{
+    gap: 10px;
+}
+
+.logo img {
+max-width: 100%;
+height: auto;
+
+}
+
+.cnt{
+    text-decoration: none;
+    color: green;
+    margin: 0 5px;
+    padding: 5px 10px;
+}
+a{
+    text-decoration: none;
+}
+
+.user-actions {
+display: flex;
+align-items: center;
+}
+
+.login-signup-box {
+
+display: flex;
+}
+.login-button{
+    color: green;
+    border: 1px solid green; 
+}
+
+.signup-button{
+    color: white;
+    border: 1px solid green; 
+    background-color: green;
+}
+
+.login-button, .signup-button {
+margin: 0 5px;
+text-decoration: none;
+padding: 5px 10px;
+border-radius: 5px;
+}
+
+.login-button:hover, .signup-button:hover {
+background-color: #333; 
+color: #fff; 
+}
+.gen-nav{
+    background-color: green;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.x{
+    margin: 0 5px;
+    color: white;
+}
+.y{
+    margin: 0 5px;
+    color: green;
+}
+footer{
+background-color: #333; 
+padding: 10px 0;
+margin-top: 20px;
+width: 100%;
+}
+
+.container{
+margin-left: 20px;
+}
+.success{
+    color: green;
+    width: 70%;
+    text-align: center;
+    padding: 10px 10px;
+    margin-top: 20px;
+    margin: 20px auto;
+}
+.error{
+    color: red;
+    width: 70%;
+    text-align: center;
+    padding: 10px 10px;
+    margin-top: 20px;
+    margin: 20px auto;
+
+}
+
+#welcome-message {
+    margin-left: auto;
+}
+form.container1 button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+  }
+  
+  form.container1 button:hover {
+    background-color: #333; 
+  }
+
+ 
+    
+
+  
+   
+ 

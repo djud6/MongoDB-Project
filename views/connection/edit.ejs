@@ -1,0 +1,82 @@
+<%- include('../partials/header.ejs')%>
+
+<style>
+    footer{
+        
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+    }
+
+    .form-table {
+           
+            border-collapse: collapse;
+        }
+
+        .form-table td {
+            padding: 10px;
+        }
+
+        .form-table label {
+            font-weight: bold;
+        }
+
+        .form-table input[type="text"],
+        .form-table textarea {
+            width:50vw;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+
+        .form-table button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .height{
+            height: 40vh;
+        }
+
+    
+</style>
+<body>
+    <div class="container">
+        <form method="POST" action="/connections/<%= connection.id %>?_method=PUT">
+            
+            <table>
+                <tr>
+                    <td><label for="topic">Topic:</label></td>
+                    <td><input type="text" id="topic" name="topic" value="<%= connection.topic %>" required></td>
+                </tr>
+                <tr>
+                    <td><label for="date">Date:</label></td>
+                    <td><input type="date" id="date" name="date" value="<%= connection.date instanceof Date ? connection.date.toISOString().split('T')[0] : '' %>" required></td>
+                </tr>
+                <tr>
+                    <td><label for="startTime">Start Time:</label></td>
+                    <td><input type="time" id="startTime" name="startTime" value="<%= connection.start instanceof Date ? connection.start.toISOString().split('T')[1].slice(0, 5) : '' %>" required></td>
+                </tr>
+                <tr>
+                    <td><label for="endTime">End Time:</label></td>
+                    <td><input type="time" id="endTime" name="endTime" value="<%= connection.end instanceof Date ? connection.end.toISOString().split('T')[1].slice(0, 5) : '' %>" required></td>
+                </tr>
+                <tr>
+                    <td><label for="description">Description:</label></td>
+                    <td><textarea id="description" name="description" rows="4" required minlength="10"><%= connection.description %></textarea></td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="align-right"><button type="submit">Submit</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    <footer>
+        &copy; Your Website Name
+    </footer>
+</body>
+<%- include('../partials/footer.ejs') %>

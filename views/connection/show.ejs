@@ -1,0 +1,60 @@
+<%- include('../partials/header.ejs') %>
+<style>
+   .container {
+        display: inline-block;
+        vertical-align: top; 
+        margin-left: 20px;
+        
+    }
+    
+
+    .capitalize {
+        text-transform: capitalize;
+    }
+    footer{
+      margin:20%;
+    }
+</style>
+<body>
+    <h2 class="container1"><%= connection.topic %></h2>
+    <% if (connection.image && !connection.image.includes('.com')) { %>
+        <img src="/images/<%= connection.image %>" alt="Connection Image" width="100" class="container1">
+    <% } else if (connection.image) { %>
+        <img src="<%= connection.image %>" alt="Connection Image" width="100" class="container1">
+    <% } %>
+
+    <div class="container">
+        <p class="capitalize"><strong>Host:</strong> <%= connection.host.firstName + " " + connection.host.lastName %></p>
+        <p><strong class="capitalize">Location:</strong> <%= connection.location %></p>
+        <p><strong>Date:</strong> <%= connection.date.toLocaleDateString() %></p>
+        <p><strong>Start:</strong> <%= connection.start %></p>
+        <p><strong>End:</strong> <%= connection.end %></p>
+        <p><strong>Posted:</strong>
+            <% if (connection.createdAt) { %>
+                <%= connection.createdAt.toLocaleString() %>
+            <% } else { %>
+                N/A
+            <% } %>
+        </p>
+    </div>
+    <div class="container2">
+      <h2 class="container1">Detailed Description</h2>
+      <p class="container1"><%= connection.description %></p>
+      <% if (user && user == connection.host._id) { %>
+          <form action="" class="container1">
+            <button type="submit" formmethod="GET" formaction="/connections/<%= connection.id %>/edit">Edit</button>
+            <button type="submit" formmethod="POST" formaction="/connections/<%= connection.id %>?_method=DELETE">Delete</button>
+          </form>
+        <% } else if (user && user != connection.host._id) { %>
+          <form action="" class="container1">
+            <h4>Are you going to Attend! RSVP now!</h4>
+            <button type="submit" formmethod="POST" formaction="/connections/<%= connection.id %>/rsvp" name="rsvp" value="Yes">Yes</button>
+            <button type="submit" formmethod="POST" formaction="/connections/<%= connection._id %>/rsvp" name="rsvp" value="No">No</button>
+            <button type="submit" formmethod="POST" formaction="/connections/<%= connection._id %>/rsvp" name="rsvp" value="Maybe">Maybe</button>
+          </form>
+        <% } %>
+  </body>
+
+    </div>
+
+<%- include('../partials/footer.ejs') %>
